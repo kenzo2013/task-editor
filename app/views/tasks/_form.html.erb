@@ -1,0 +1,5 @@
+<%= simple_form_for task do |f| %>
+  <%= f.input :name, input_html: { autofocus: true } %>
+  <%= link_to "Cancel", tasks_path %>
+  <%= f.submit  %>
+<% end %>

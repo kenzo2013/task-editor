@@ -1,0 +1,7 @@
+<%= turbo_frame_tag task do %>
+<li class="relative mt-5 p-6 bg-red-200 text-gray-900 rounded shadow-md transition-transform hover:-translate-y-1 will-change-transform">
+  <h3 class="flex justify-between align-center">
+    <span class="text-xl mb-2 font-medium"><%= link_to task.name, task_path(task),  data: { turbo_frame: "_top" } %></span>
+  </h3>
+</li>
+<% end %>

@@ -1,7 +1,8 @@
 class TasksController < ApplicationController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+
   def index
-    @tasks = Task.all
+    @tasks = Task.ordered
   end
 
   def show
@@ -13,11 +14,13 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
-
     if @task.save
-      redirect_to tasks_path, notice: "Task was successfully created."
+      respond_to do |format|
+        format.html { redirect_to tasks_path, notice: "Task was successfully created." }
+        format.turbo_stream { flash.now[:notice] = "Task was successfully created." }
+      end
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -42,7 +45,8 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:name)
   end
+
   def set_task
-    Task.find(params[:id])
+    @task = Task.find(params[:id])
   end
 end

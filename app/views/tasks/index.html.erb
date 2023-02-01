@@ -13,8 +13,6 @@
   <br>
   <%= turbo_frame_tag 'new_task' %>
   <%= turbo_frame_tag "tasks" do %>
-    <ul role="list" class="mt-10 max-w-lg mx-auto">
-      <%= render @tasks %>
-    </ul>
+  <%= render @tasks %>
   <% end %>
 </div>

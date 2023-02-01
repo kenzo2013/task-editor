@@ -1,0 +1,9 @@
+<%= link_to sanitize("&larr; Back to quote"), task_path(@task) %>
+<br/>
+<br/>
+<div class="header">
+  <h1>Edit task</h1>
+</div>
+<%= turbo_frame_tag @task do %>
+  <%= render 'form', task: @task %>
+<% end %>
